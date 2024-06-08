@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <style>
+        .graph-container {
+          display: none;
+        }
+      </style>
+    <script>
+        var currentGraphIndex = 0;
+        var graphIds = ['custo4j', 'custo5j','statuslpr','statushd','graftipos','grafdepart','grafstatus','grafcorr','grafpm','grafest','grafprv','grafmtbf','grafmttr','grafdispo','grafconfi','grafip'];
+
+        function toggleGraphs() {
+            var currentGraphId = graphIds[currentGraphIndex];
+            var currentGraph = document.getElementById(currentGraphId);
+
+            currentGraph.style.display = 'none';
+
+            currentGraphIndex = (currentGraphIndex + 1) % graphIds.length;
+
+            var nextGraphId = graphIds[currentGraphIndex];
+            var nextGraph = document.getElementById(nextGraphId);
+
+            nextGraph.style.display = 'block';
+        }
+
+        setInterval(toggleGraphs, 10000);
+
+    </script>
+    <title>Gráficos PCM</title>
+</head>
+<body>
+
+    <div id="custo4j" class="graph-container">
+        {{ gastos_setores_4j | safe }}
+    </div>
+
+    <div id="custo5j" class="graph-container">
+        {{ gastos_setores_5j | safe }}
+    </div>
+
+    <div id="custogeral" class="graph-container">
+        {{ custo_geral | safe }}
+    </div>
+
+    <div id="statuslpr" class="graph-container">
+        {{ status_lpr | safe }}
+    </div>
+
+    <div id="statushd" class="graph-container">
+        {{ status_hd | safe }}
+    </div>
+
+    <div id="graftipos" class="graph-container">
+        {{ graf_tipos | safe }}
+    </div>
+
+    <div id="grafdepart" class="graph-container">
+        {{ graf_depart | safe }}
+    </div>
+
+    <div id="grafstatus" class="graph-container">
+        {{ graf_status | safe }}
+    </div>
+
+    <div id="grafcorr" class="graph-container">
+        {{ graf_corr | safe }}
+    </div>
+
+    <div id="grafpm" class="graph-container">
+        {{ graf_pm | safe }}
+    </div>
+
+    <div id="grafest" class="graph-container">
+        {{ graf_est | safe }}
+    </div>
+
+    <div id="grafprv" class="graph-container">
+        {{ graf_prv | safe }}
+    </div>
+
+    <div id="grafmtbf" class="graph-container">
+        {{ mtbf | safe }}
+    </div>
+
+    <div id="grafmttr" class="graph-container">
+        {{ mttr | safe }}
+    </div>
+
+    <div id="grafdispo" class="graph-container">
+        {{ disponibilidade | safe }}
+    </div>
+
+    <div id="grafconfi" class="graph-container">
+        {{ confiabilidade  | safe }}
+    </div>
+
+    <div id="grafip" class="graph-container">
+        {{ indice_prod | safe }}
+    </div>
+
+
+</body> 
+</html>
